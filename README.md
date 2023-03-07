@@ -14,3 +14,9 @@
   - components: Os componentes disponiveis para a interface. Cada componente possui uma pasta com arquivos .jsx e .scss, respectivamente responsaveis pela renderização e pela estilização.
   - pages: As páginas da interface.
   - styles: Estilizações gerais/globais da aplicação. 
+
+### Como utilizar
+
+1. Primeiro, clone o repositório com: `git clone https://github.com/Archesz/Electron-React-Template`
+2. No terminal e no repositório, instale as depêndencias com: `npm install`
+3. Execute o comando `yarn electron:serve` para visulizar o projeto enquanto realiza as alterações.

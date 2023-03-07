@@ -4,9 +4,14 @@ function createWindow() {
   const win = new BrowserWindow({
     width: 800,
     height: 600,
+    transparent: true,
+    frame: false,
+    backgroundColor: '#80000000',
     webPreferences: {
-      nodeIntegration: true
-    }
+      nodeIntegration: true,
+      enableRemoteModule: true,
+      contextIsolation: false,
+  },
   });
 
   win.loadURL('http://localhost:3000');
