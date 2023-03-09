@@ -14,3 +14,5 @@
   - components: Os componentes disponiveis para a interface. Cada componente possui uma pasta com arquivos .jsx e .scss, respectivamente responsaveis pela renderização e pela estilização.
   - pages: As páginas da interface.
   - styles: Estilizações gerais/globais da aplicação. 
+  - data: É a pasta que armazena os dados que estão sendo analisados. (Esses dados são substituidos toda vez que o programa é executado novamente com outros dados)
+  - 

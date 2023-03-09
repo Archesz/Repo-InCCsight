@@ -1,0 +1,174 @@
+.container-home{
+    width: 100%;
+    height: 100%;
+
+    .header{
+        height: 85vh;
+        background-color: #192444;
+        box-sizing: border-box;
+        padding: 0px 30px;
+        display: flex;
+        flex-direction: row;
+        z-index: 99;
+
+        .banner{
+            width: 440px;
+            height: 100%;
+            background-color: #1F2C56;
+            box-sizing: border-box;
+            padding: 8px 24px;
+
+            .img-logo{
+                height: 360px;
+            }
+
+            .banner-selects{
+                display: flex;
+                flex-direction: column;
+                margin-top: 10px;
+                margin-bottom: 24px;
+
+                .input-group{
+                    display: flex;
+                    margin-top: 12px;;
+                    flex-direction: column;
+                    width: 50%;
+                    
+                    label{
+                        font-size: 16px;
+                        color: white;
+                        font-weight: bolder;
+                        margin-bottom: 6px;
+                    }
+
+                    select{
+                        height: 24px;
+                        border-radius: 4px;
+                        box-sizing: border-box;
+                        padding: 0px 2px;
+                    }
+                }
+            }
+
+            .banner-span{
+                color: white;
+                font-size: 16px;
+            }
+        
+            .btn-check{
+                width: 180px;
+                height: 35px;
+                border-radius: 4px;
+                font-weight: bold;
+                box-shadow: 4px 4px 6px rgb(30, 30, 30);
+                cursor: pointer;
+            }
+        }
+
+        .subjects-list{
+            width: 300px;
+            height: 90%;
+            display: flex;
+            flex-direction: column;
+            margin-top: 2%;
+            margin-left: 50px;
+
+            label{
+                font-weight: bold;
+                color: white;
+                font-size: 18px;
+                margin-bottom: 4px;
+            }
+
+            input{
+                height: 35px;
+                box-sizing: border-box;
+                padding-left: 4px;
+                border-radius: 4px;
+            }
+
+            .subjects{
+                margin-top: 10px;
+                overflow-y: scroll;
+                height: 100%;
+            }
+        }
+
+        .square-field{
+            width: 340px;
+            height: 80px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+            border: 1px solid white;
+            border-radius: 12px;    
+            margin-left: 240px;
+            margin-top: 630px;
+
+            div{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                
+                .qnt{
+                    font-size: 40px;
+                    color: white;
+                    font-weight: bold;
+                }
+
+                .label{
+                    font-size: 21px;
+                    color: white;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+    
+    .gear-icon{
+        color: white;
+        font-size: 32px;
+        margin-top: 40px;
+        cursor: pointer;
+
+        &:hover{
+            box-shadow: 4px 4px 6px rgba(255, 255, 255, 0.45);
+            border-radius: 50%;
+        }
+    }
+}
+
+/* Graphs */
+
+.area-view{
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 20px;
+    
+    .area-table{
+        margin-top: 20px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .area-boxplot{
+        margin-top: 60px;
+        margin-left: 40px;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .area-midline{
+        box-sizing: border-box;
+        padding-top: 30px;
+        margin-left: 40px;
+        border-top: 1px solid #aeaeae;
+        display: flex;
+        flex-direction: row;
+    }
+
+}
