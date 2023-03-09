@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import Plot from 'react-plotly.js'
 import Boxplot from './Boxplot'
 import './BoxplotParcellation.scss'
 

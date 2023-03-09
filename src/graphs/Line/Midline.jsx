@@ -7,9 +7,9 @@ function getMeanPointsValue(data, method, scalar){
     let size = data[0]["Watershed_midlines"]["FA"].length
     let values = []
 
-    for(let p = 0; p != size; p++){
+    for(let p = 0; p !== size; p++){
         let p_sum = 0
-        for(let i = 0; i != data.length; i++){
+        for(let i = 0; i !== data.length; i++){
             p_sum += data[i][method][scalar][p]
         }    
         let p_value = p_sum / size
@@ -23,9 +23,9 @@ function getMeanThicknessValue(data, method){
     let size = data[0]["Watershed_thickness"].length
     let values = []
 
-    for(let p = 0; p != size; p++){
+    for(let p = 0; p !== size; p++){
         let p_sum = 0
-        for(let i = 0; i != data.length; i++){
+        for(let i = 0; i !== data.length; i++){
             p_sum += data[i][method][p]
         }    
         let p_value = p_sum / size
@@ -46,7 +46,7 @@ function Midline(props) {
     let roqs = {}
     let watershed = {}
 
-    if(scalar != "Thickness"){
+    if(scalar !== "Thickness"){
         roqs = {
             y: getMeanPointsValue(props.data, "ROQS_midlines", scalar),
             modes: "lines",

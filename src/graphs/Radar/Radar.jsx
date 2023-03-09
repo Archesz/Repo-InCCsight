@@ -17,7 +17,7 @@ function getMeanValues(subjects, method, parc_method, scalar, part){
 
 function getAllValues(subjects, method, parc_method, scalar){
     let values = []
-    for(let i = 1; i != 6; i++){
+    for(let i = 1; i !== 6; i++){
         values.push(getMeanValues(subjects, method, parc_method, scalar, `P${i}`))
     }
     return values

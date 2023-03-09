@@ -7,7 +7,8 @@
 .container{
     overflow: none;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
+    height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -22,4 +23,13 @@
     --white: #fdfdfd;
     --green: #00563B;
     --primaryColorLight: #686E8E;
+    --primaryColorContrast: #1F2C56;
+    --gray: #aeaeae;
 }
+
+/* 
+Cores steps 
+fundo: #192444
+
+
+*/

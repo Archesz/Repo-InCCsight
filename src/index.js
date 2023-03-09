@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 
 import Enter from "./components/Enter/Enter";
 import Home from './pages/Home'
+import Loading from './components/Loading/Loading'
 import './styles/global.scss'
 
 import {
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <div className='container'> <Enter /></div>
+  },
+  {
+    path: "/Loading",
+    element: <Loading />
   },
   {
     path: "/Home",

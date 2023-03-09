@@ -5,7 +5,7 @@ import './Scatter.scss'
 function getAllPoints(data, method, scalar){
     let values = []
 
-    for(let i = 0; i != data.length; i++){
+    for(let i = 0; i !== data.length; i++){
         let value = data[i][method][scalar]
         values.push(value)
     }

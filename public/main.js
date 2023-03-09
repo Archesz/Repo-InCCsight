@@ -16,7 +16,7 @@ function createWindow() {
     },
 
   });
-  Menu.setApplicationMenu(null)
+  // Menu.setApplicationMenu(null)
 
   win.loadURL('http://localhost:3000');
 }
@@ -49,7 +49,7 @@ ipcMain.on('open-window', () => {
   newWindow.maximize()
   newWindow.show()
 
-  newWindow.loadURL('http://localhost:3000/Home');
+  newWindow.loadURL('http://localhost:3000/Loading');
 
   newWindow.on('closed', () => {
     newWindow = null;
