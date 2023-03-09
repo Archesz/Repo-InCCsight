@@ -24,6 +24,7 @@ function View(props) {
 
     function startAnalyzes() {
         let t = localStorage.getItem("folders")
+        window.startThais()
         openWindow();
         console.log(t)
     }

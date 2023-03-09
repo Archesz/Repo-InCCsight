@@ -27,3 +27,11 @@ function viewBrain(){
     command = exec(`.\\view3d\\venv\\Scripts\\activate && python .\\view3d\\viewBrain.py`)
 
 }
+
+/* Chamar a ferramenta */ 
+
+function startThais(){
+    
+    command = exec(`cd ../methods/thais && python app.py -p /home/jovi/Dados/teste`)
+    //command = exec(`cd ./methods/thais && dir`)
+}
