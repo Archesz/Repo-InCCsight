@@ -1,18 +1,43 @@
-# Template Electron.js + React.js
+# Nome do software
+Descrição curta do software.
 
-## Overview
+## Instalação
+Para realizar a instalação, existem duas formas:
+a) Usuários que pretendem apenas utilizar a ferramenta, sem a necessidade de se ter o código e o ambiente de desenvolvimento, acesse: <a href="#"> www.vercel.miclab.com.br </a>
 
-- Electron.js é um framework Javascript para construção de aplicações desktop que utiliza o HTML, CSS e Javascript para renderizar e para funcionalidades.
-- React.js é um framework Javascript para criação de componentes e interfaces.
+b) Usuários com conhecimento técnico prévio, desenvolvedores ou pesquisadores que queiram utilizar a ferramenta e ter acesso ao código e funcionamento, sigam a próxima etapa:
 
-### Pastas
-- Public: Localiza os arquivos públicos do projeto:
-  - favicon.ico: Altera o icone da aplicação.
-  - index.html: É a tela que será renderizada. A `<div id="root"> </div>` é onde o React renderiza seus componentes.
-  - main.js: É a aplicação Electron, onde executa e exibe as janelas desktop.
-- src: Exibe os principais códigos para interface:
-  - components: Os componentes disponiveis para a interface. Cada componente possui uma pasta com arquivos .jsx e .scss, respectivamente responsaveis pela renderização e pela estilização.
-  - pages: As páginas da interface.
-  - styles: Estilizações gerais/globais da aplicação. 
-  - data: É a pasta que armazena os dados que estão sendo analisados. (Esses dados são substituidos toda vez que o programa é executado novamente com outros dados)
-  - 
+### Pré-requisitos
+- (Para Windows) Sistema operacional Windows 10 ou superior.
+- Node.js instalado na versão 14 ou superior.
+
+### Passos para instalação
+1. Faça o download do arquivo de instalação do software no site oficial ou clone o repositório do software.
+2. Abra o terminal na pasta onde está localizado o arquivo de instalação ou repositório clonado.
+3. Execute o comando npm install ou yarn install para instalar as dependências do projeto.
+4. Execute o comando yarn electron:serve para iniciar o software.
+
+O software agora estará disponível para uso.
+
+## Utilização
+Instruções para utilização do software.
+
+## Fluxo de trabalho básico
+Explicação do fluxo de trabalho básico com o software.
+
+## Exemplos de uso
+Exemplos de uso do software para pesquisadores e médicos.
+
+## Contribuição
+Instruções para contribuir com o software.
+
+## Desenvolvimento
+Instruções para quem deseja contribuir para o desenvolvimento do software.
+
+## Problemas conhecidos
+Lista de problemas conhecidos do software e possíveis soluções.
+
+## Próximos passos
+
+## Licença
+Informação sobre a licença do software e restrições de uso.
