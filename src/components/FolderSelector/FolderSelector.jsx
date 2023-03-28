@@ -3,7 +3,7 @@ import './FolderSelector.scss'
 import { TbFolder, TbChecks } from 'react-icons/tb'
 
 function FolderSelector(props) {
-    const [folderPath, setFolderPath] = useState("");
+    const [folderPath, setFolderPath] = useState([]);
     
     const inputRef = useRef(null);
 
@@ -16,10 +16,17 @@ function FolderSelector(props) {
     }
 
     function handleFolderChange(event) {
-        const selectedFolder = event.target.files[0].path;
-        let lastSlashIndex = selectedFolder.lastIndexOf("\\");
-        let folderPath = selectedFolder.substring(0, lastSlashIndex);
         
+        const selectedFolder = event.target.files[0].path;
+        console.log(event)
+        // let lastSlashIndex = selectedFolder.lastIndexOf("\\");
+        let lastSlashIndex = selectedFolder.lastIndexOf("/");
+        let penultimateSlashIndex = selectedFolder.lastIndexOf("/", lastSlashIndex - 1);
+
+
+        let folderPath = selectedFolder.substring(0, penultimateSlashIndex);
+        console.log(folderPath)
+      
         if (selectedFolder) {
             setFolderPath(folderPath);
             savePath(folderPath)
@@ -49,8 +56,6 @@ function FolderSelector(props) {
                     <span className="icon-text">Click for select a folder</span>
                 </button>
             </label>
-
-            {folderPath && <p className="path-label"><TbChecks className="check"/></p>}
         </div>
     );
 }

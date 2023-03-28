@@ -11,7 +11,7 @@ import itertools
 from tqdm import tqdm
 from skimage import measure
 from scipy import stats
-
+import time 
 def warn(*args, **kwargs):
     pass
 import warnings
@@ -148,6 +148,8 @@ else:
 
 # Create dataframe for each segmentation method
 
+start_time = time.time()
+
 scalar_statistics_names = ['FA','FA StdDev','MD','MD StdDev','RD','RD StdDev','AD','AD StdDev']
 scalar_midline_names = list(range(0,200))
 
@@ -165,10 +167,18 @@ dict_removed_subjects = {}
 dict_scalar_outliers = {}
 
 # Segment and get info
+
+tempo_watershed = []
+tempo_roqs = []
+
 for subject_path in tqdm(path_dict.values()):
-    
+
     for segmentation_method in dict_segmentation_methods.keys():    
-        
+
+        print(f"Executando o {segmentation_method} no sujeito {subject_path}")
+
+        start = time.time()
+
         if segmentation_method not in dict_scalar_statistics.keys(): 
             dict_segmentation_masks[segmentation_method] = {}
             dict_scalar_maps[segmentation_method] = {}
@@ -224,7 +234,11 @@ for subject_path in tqdm(path_dict.values()):
 
         # Save array with subject keys
         loaded_subjects.append(subject_name)
-    
+
+        end = time.time()
+
+        total = end - start
+
 loaded_subjects = list(set(loaded_subjects))
 loaded_subjects.sort()
 
@@ -253,6 +267,10 @@ for segmentation_method in dict_segmentation_methods.keys():
         outliers = df[~df.between(df.quantile(.1), df.quantile(.9))].index
         dict_scalar_outliers[segmentation_method] += list(outliers)
 
+end_time = time.time()
+time = end_time - start_time
+print(f"Tempo processado (Watershed e ROQS): {time:.2f} segundos.", flush=True)
+
 # Funções auxiliares
 def adjust_dict_parcellations_masks(data):
     methods = data.keys()
@@ -269,12 +287,12 @@ def adjust_dict_parcellations_masks(data):
             subject_data["Freesurfer"] = data[method][subject]["Freesurfer"]
             subjects_list.append(subject_data)
         df = pd.DataFrame(subjects_list)
-        df.to_csv(f"csvs/{method}_parcellations_masks.csv", sep=";")
+        df.to_csv(f"../csvs/{method}_parcellations_masks.csv", sep=";")
 
 # Teste
-pd.DataFrame(dict_segmentation_masks).to_csv("csvs/dict_segmentation_masks.csv", sep=";")
+pd.DataFrame(dict_segmentation_masks).to_csv("../csvs/dict_segmentation_masks.csv", sep=";")
 
-#pd.DataFrame(dict_scalar_maps).to_csv("csvs/dict_scalar_maps.csv", sep=";")
+#pd.DataFrame(dict_scalar_maps).to_csv("../csvs/dict_scalar_maps.csv", sep=";")
 def adjust_dict_scalar_maps(data):
     methods = list(data.keys())
     subjects = list(data["ROQS"].keys())
@@ -292,7 +310,7 @@ def adjust_dict_scalar_maps(data):
             subjects_list.append(subject_data)
 
     df = pd.DataFrame(subjects_list)
-    df.to_csv(f"csvs/dict_scalar_maps.csv", sep=";")
+    df.to_csv(f"../csvs/dict_scalar_maps.csv", sep=";")
     
 adjust_dict_scalar_maps(dict_scalar_maps)
 
@@ -313,35 +331,35 @@ def adjust_dict_parcellations_statistics(data):
                         subject_data[f"{method_p}_{scalar}_{part}"] = data[method][method_p][part][scalar][subject]
             subject_list.append(subject_data)
         df = pd.DataFrame(subject_list)
-        df.to_csv(f"csvs/{method}_parcellation_statistics.csv", sep=";")
+        df.to_csv(f"../csvs/{method}_parcellation_statistics.csv", sep=";")
 
 adjust_dict_parcellations_statistics(dict_parcellations_statistics)
-#pd.DataFrame(dict_parcellations_statistics).to_csv("csvs/dict_parcellations_statistics.csv", sep=";")
+#pd.DataFrame(dict_parcellations_statistics).to_csv("../csvs/dict_parcellations_statistics.csv", sep=";")
 
 # Dict scalar statistics -> Preciso separar em 2 CSV
-dict_scalar_statistics["Watershed"].to_csv("csvs/Watershed_scalar_statistics.csv", sep=";")
-dict_scalar_statistics["ROQS"].to_csv("csvs/ROQS_scalar_statistics.csv", sep=";")
+dict_scalar_statistics["Watershed"].to_csv("../csvs/Watershed_scalar_statistics.csv", sep=";")
+dict_scalar_statistics["ROQS"].to_csv("../csvs/ROQS_scalar_statistics.csv", sep=";")
 
 # Dict scalar Midlines ->
-dict_scalar_midlines["Watershed"].to_csv("csvs/Watershed_scalar_midlines.csv", sep=";")
-dict_scalar_midlines["ROQS"].to_csv("csvs/ROQS_scalar_midlines.csv", sep=";")
+dict_scalar_midlines["Watershed"].to_csv("../csvs/Watershed_scalar_midlines.csv", sep=";")
+dict_scalar_midlines["ROQS"].to_csv("../csvs/ROQS_scalar_midlines.csv", sep=";")
 
 # Dict Error Prob ->
-dict_error_prob["Watershed"].to_csv("csvs/Watershed_error_prob.csv", sep=";")
-dict_error_prob["ROQS"].to_csv("csvs/ROQS_error_prob.csv", sep=";")
+dict_error_prob["Watershed"].to_csv("../csvs/Watershed_error_prob.csv", sep=";")
+dict_error_prob["ROQS"].to_csv("../csvs/ROQS_error_prob.csv", sep=";")
 
 # Dict Error Prob
-dict_error_prob["Watershed"].to_csv("csvs/Watershed_error_prob.csv", sep=";")
-dict_error_prob["ROQS"].to_csv("csvs/ROQS_error_prob.csv", sep=";")
+dict_error_prob["Watershed"].to_csv("../csvs/Watershed_error_prob.csv", sep=";")
+dict_error_prob["ROQS"].to_csv("../csvs/ROQS_error_prob.csv", sep=";")
 
 # Dict Parcellations masks
 adjust_dict_parcellations_masks(dict_parcellations_masks)
 
-dict_thickness["Watershed"].to_csv("csvs/Watershed_dict_thickness.csv", sep=";")
-dict_thickness["ROQS"].to_csv("csvs/ROQS_dict_thickness.csv", sep=";")
+dict_thickness["Watershed"].to_csv("../csvs/Watershed_dict_thickness.csv", sep=";")
+dict_thickness["ROQS"].to_csv("../csvs/ROQS_dict_thickness.csv", sep=";")
 
-pd.DataFrame(dict_removed_subjects).to_csv("csvs/dict_removed_subjects.csv", sep=";")
-pd.DataFrame(dict_scalar_outliers).to_csv("csvs/dict_scalar_outliers.csv", sep=";")
+pd.DataFrame(dict_removed_subjects).to_csv("../csvs/dict_removed_subjects.csv", sep=";")
+pd.DataFrame(dict_scalar_outliers).to_csv("../csvs/dict_scalar_outliers.csv", sep=";")
 
 # VISUALIZATION -------------------------------------------------------------------------------
 
@@ -1816,6 +1834,7 @@ def empty_figure_with_text(text):
     }
 
 # ---------------------------------- LAYOUT -----------------------------------------------
+"""
 app.layout = html.Div(
     children=[
         html.Div(
@@ -2186,7 +2205,7 @@ app.layout = html.Div(
         )
     ],
 )
-
+"""
 # --------------------------------- CALLBACKS ---------------------------------------------
 
 # Banner --------------------------------------------------------------
@@ -2663,12 +2682,12 @@ def update_selected_points(selection1, selection2, scalar_x, scalar_y):
 
 # SERVER CONFIG ---------------------------------------------------------------------------------
 
-port = opts.port
-
-def open_browser():
-    url = "http://localhost:{0}".format(port)
-    webbrowser.open(url)
-
-if __name__ == "__main__":
-    Timer(1.25, open_browser).start()
-    app.run_server(debug=False, port=port, host='0.0.0.0')
+# port = opts.port
+# 
+# def open_browser():
+#     url = "http://localhost:{0}".format(port)
+#     webbrowser.open(url)
+# 
+# if __name__ == "__main__":
+#     Timer(1.25, open_browser).start()
+#     app.run_server(debug=False, port=port, host='0.0.0.0')

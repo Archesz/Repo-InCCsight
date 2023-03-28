@@ -19,10 +19,10 @@ function BoxplotSegmentation(props) {
 
             <div className='boxplot-row'>
 
-                <Boxplot title="FA" watershed={getScalarValues(props.data, "Watershed_scalar", "FA")} roqs={getScalarValues(props.data, "ROQS_scalar", "FA")} width="375"/>
-                <Boxplot title="MD" watershed={getScalarValues(props.data, "Watershed_scalar", "MD")} roqs={getScalarValues(props.data, "ROQS_scalar", "MD")} width="375"/>
-                <Boxplot title="RD" watershed={getScalarValues(props.data, "Watershed_scalar", "RD")} roqs={getScalarValues(props.data, "ROQS_scalar", "RD")} width="375"/>
-                <Boxplot title="AD" watershed={getScalarValues(props.data, "Watershed_scalar", "AD")} roqs={getScalarValues(props.data, "ROQS_scalar", "AD")} width="375"/>
+                <Boxplot title="FA" watershed={getScalarValues(props.data, "Watershed_scalar", "FA")} roqs={getScalarValues(props.data, "ROQS_scalar", "FA")} cnn={getScalarValues(props.data,"santarosa_scalars","FA")} width="375"/>
+                <Boxplot title="MD" watershed={getScalarValues(props.data, "Watershed_scalar", "MD")} roqs={getScalarValues(props.data, "ROQS_scalar", "MD")} cnn={getScalarValues(props.data,"santarosa_scalars","MD")} width="375"/>
+                <Boxplot title="RD" watershed={getScalarValues(props.data, "Watershed_scalar", "RD")} roqs={getScalarValues(props.data, "ROQS_scalar", "RD")} cnn={getScalarValues(props.data,"santarosa_scalars","RD")} width="375"/>
+                <Boxplot title="AD" watershed={getScalarValues(props.data, "Watershed_scalar", "AD")} roqs={getScalarValues(props.data, "ROQS_scalar", "AD")} cnn={getScalarValues(props.data,"santarosa_scalars","AD")} width="375"/>
 
             </div>
 

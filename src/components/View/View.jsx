@@ -36,7 +36,7 @@ function View(props) {
                         <span className='subject-name'>{data[0]["Id"]}</span>
                         
                         <div className='image'>
-                            <img src={cc} className="image-view" alt="" />
+                            <span className='msg-image'>Image upload will be added in next release</span>
                         </div>
                         
                         <div className='image-prompts'>
@@ -118,7 +118,7 @@ function View(props) {
                         <span className='subject-name'>3D: {data[0]["Id"]}</span>
                         
                         <div className='image'>
-                            <img src={cc} className="image-view" alt="" />
+                            <span className='msg-image'>Image upload will be added in next release</span>
                         </div>
                         
                         <div className='image-prompts'>
@@ -172,20 +172,6 @@ function View(props) {
                     <div className='area-table'>
                         <TableSegmentation data={data} type="3D"/>
                         <TableParcellation data={data} type="3D"/>
-                    </div>
-                        
-                    <div className='area-boxplot'>
-                        <BoxplotSegmentation data={data} />
-                        <BoxplotParcellation data={data} />
-                    </div>
-    
-                    <div className='area-scatter'>
-                        <Scatter data={data}/>
-                    </div>
-    
-                    <div className='area-midline'>
-                        <Midline data={data}/>
-                        <Radar data={data}/>
                     </div>
     
                 </div>

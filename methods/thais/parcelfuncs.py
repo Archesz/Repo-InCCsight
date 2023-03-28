@@ -16,8 +16,7 @@ def parc_cover(segm, FA_map, n_parcel=5, group_offset=10):
                         to not be used as seeds in the Watershed transform 
     Outputs:
         - parcel: 2D numpy array (int) with same dimentions as segmentation 
-                  input labeled with performe parcels
-                  
+                  input labeled with performe parcels                  
     '''  
 
     from libcc import points, getGroupPoints, grad_morf

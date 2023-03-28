@@ -1,16 +1,17 @@
 import React, { useState } from 'react'
 import FolderSelector from '../FolderSelector/FolderSelector'
-import { TbPlus } from 'react-icons/tb'
+import { TbPlus, TbHistory} from 'react-icons/tb'
 import Question from '../Question/Question';
 
 const { ipcRenderer } = window.require('electron');
 
 const questions = [
-    { "question": "How to enter data into the software?", "response": "Boa sorte." },
-    { "question": "How to add more groups to be analyzed?", "response": "Se vira" },
-    { "question": "How to suggest modifications to the tool?", "response": "Se vira" },
-    { "question": "What are the current limitations of the tool?", "response": "Se vira" },
-    { "question": "How to add different charts?", "response": "Se vira" }
+    { "question": "What are the next steps for the tool?", "response": "."},
+    { "question": "How to enter data into the software?", "response": "." },
+    { "question": "How to add more groups to be analyzed?", "response": "." },
+    { "question": "How to suggest modifications to the tool?", "response": "." },
+    { "question": "What are the current limitations of the tool?", "response": "." },
+    { "question": "How to add different charts?", "response": "." }
 ]
 
 function openWindow() {
@@ -22,11 +23,24 @@ function View(props) {
     const [folders, setFolders] = useState([<FolderSelector key={1} id={1} />]);
     const [filter, setFilter] = useState("")
 
-    function startAnalyzes() {
-        let t = localStorage.getItem("folders")
-        window.startThais()
+    async function startAnalyzes() {
+        
+        document.querySelector("#loading-screen").style.display = "flex"
+        
+        let folders = JSON.parse(localStorage.getItem("folders"))
+
+        await window.startThais(folders);
+        await window.startJoany(folders);
+        
+        await window.transformJson();
+
         openWindow();
-        console.log(t)
+    }
+
+    async function loadLast(){
+        
+        await window.transformJson();
+        openWindow()
     }
 
     function handleAddButtonClick() {
@@ -65,9 +79,12 @@ function View(props) {
                     </button>
 
                 </div>
-
-                <button className='btn-start' onClick={startAnalyzes}>Run analyzes</button>
-
+                
+                <div className='row-btns'>
+                    <TbHistory className='btn-history' onClick={loadLast}/>
+                    <button className='btn-start' onClick={startAnalyzes}>Run analyzes</button>
+                </div>
+                
             </div>
         )
     } else if (props.type === "Help") {

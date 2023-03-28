@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import '../../styles/global.scss'
-
+import { Dna } from  'react-loader-spinner'
 import './Enter.scss'
 import logo from '../../assets/inccsight.png'
 
 // Icones
 import { TbHome2, TbQuestionCircle, TbBrandGithub, TbNews, TbSettings } from 'react-icons/tb'
 import View from './View'
+import Loading from '../Loading/Loading'
 
 function Enter() {
 
@@ -30,6 +31,9 @@ function Enter() {
 
     return (
         <div className='enter-container'>
+            <div className='loading-screen' id='loading-screen'>
+                <Loading/>
+            </div>
 
             <div className='enter-header'>
 

@@ -49,7 +49,7 @@ ipcMain.on('open-window', () => {
   newWindow.maximize()
   newWindow.show()
 
-  newWindow.loadURL('http://localhost:3000/Loading');
+  newWindow.loadURL('http://localhost:3000/Home');
 
   newWindow.on('closed', () => {
     newWindow = null;
