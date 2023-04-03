@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import FolderSelector from '../FolderSelector/FolderSelector'
 import { TbPlus, TbHistory} from 'react-icons/tb'
 import Question from '../Question/Question';
+import MultiSelect from '../MultiSelect/MultiSelect';
 
 const { ipcRenderer } = window.require('electron');
 
@@ -28,13 +29,14 @@ function View(props) {
         document.querySelector("#loading-screen").style.display = "flex"
         
         let folders = JSON.parse(localStorage.getItem("folders"))
-
-        await window.startThais(folders);
-        await window.startJoany(folders);
         
-        await window.transformJson();
+        await window.startROQS(folders);
+        //await window.startThais(folders);
+        //await window.startJoany(folders);
+        
+        //await window.transformJson();
 
-        openWindow();
+        //openWindow();
     }
 
     async function loadLast(){
@@ -67,8 +69,8 @@ function View(props) {
         return (
             <div className='enter-right'>
 
+                <MultiSelect />
                 <span className='enter-name'>Enter the folders you want to perform the analysis.</span>
-                <span className='enter-name'>Click in "+" for insert more groups.</span>
 
                 <div className='folders-inputs'>
 
@@ -81,7 +83,12 @@ function View(props) {
                 </div>
                 
                 <div className='row-btns'>
-                    <TbHistory className='btn-history' onClick={loadLast}/>
+
+                    <div className='btn-history' onClick={loadLast}>
+                        <TbHistory className='icon-history'/>
+                        <span>Recent</span>
+                    </div>
+                    
                     <button className='btn-start' onClick={startAnalyzes}>Run analyzes</button>
                 </div>
                 

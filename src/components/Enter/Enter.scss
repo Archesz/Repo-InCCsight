@@ -69,16 +69,18 @@
         .enter-right{
             width: 100%;
             height: 100%;
-            
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
             .enter-name{
-                margin-left: 10px;
                 font-weight: bold;
+                font-size: 14px;
             }
 
             .folders-inputs{
-                margin-top: 20px;
                 width: 100%;
-                height: 320px;
+                height: 260px;
                 overflow-y: scroll;
                 display: flex;
                 flex-direction: row;
@@ -118,13 +120,13 @@
     
     .row-btns{
         display: flex;
+        width: 100%;
         flex-direction: row;
         margin-top: 20px;
         align-items: center;
-
+        gap: 20px;
         .btn-start{
-            margin-left: 10%;
-            width: 80%;
+            width: 100%;
             height: 50px;
             border-radius: 8px;
             border: none;
@@ -142,17 +144,31 @@
         }
     
         .btn-history{
-            font-size: 24px;
+            height: 50px;
+            width: 20%;
             background-color: var(--primaryColor);
-            box-sizing: content-box;
-            padding: 10px;
             border-radius: 8px;
             box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.5);
             color: var(--white);
+            display: flex;
+            flex-direction: row;
+            align-items: center;
             cursor: pointer;
+            padding: 0px 10px;
+            gap: 10px;
+
             &:hover{
                 transition: .4s;
                 filter: brightness(2);
+            }
+
+            span{
+                margin-left: 2px;
+                margin-top: -4px;
+            }
+
+            .icon-history{
+                font-size: 20px;
             }
         }
 

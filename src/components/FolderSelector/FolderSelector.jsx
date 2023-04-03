@@ -18,15 +18,20 @@ function FolderSelector(props) {
     function handleFolderChange(event) {
         
         const selectedFolder = event.target.files[0].path;
-        console.log(event)
-        // let lastSlashIndex = selectedFolder.lastIndexOf("\\");
+
         let lastSlashIndex = selectedFolder.lastIndexOf("/");
         let penultimateSlashIndex = selectedFolder.lastIndexOf("/", lastSlashIndex - 1);
-
-
         let folderPath = selectedFolder.substring(0, penultimateSlashIndex);
-        console.log(folderPath)
-      
+        
+        if(folderPath.length == 0){
+            lastSlashIndex = selectedFolder.lastIndexOf("\\");
+            penultimateSlashIndex = selectedFolder.lastIndexOf("\\", lastSlashIndex - 1);
+            folderPath = selectedFolder.substring(0, penultimateSlashIndex);
+        }
+
+        let check = document.querySelector(`#check_${props.id}`)
+        check.style.display = "flex"
+
         if (selectedFolder) {
             setFolderPath(folderPath);
             savePath(folderPath)
@@ -56,6 +61,8 @@ function FolderSelector(props) {
                     <span className="icon-text">Click for select a folder</span>
                 </button>
             </label>
+
+            <TbChecks id={`check_${props.id}`} className="check-icon"/>
         </div>
     );
 }
