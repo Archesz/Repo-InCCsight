@@ -31,6 +31,7 @@ function Home() {
     const [filter, setFilter] = useState("")
     const [data, setData] = useState(subjects)
     const [view, setView] = useState("2D")
+    console.log(data)
 
     function filterSubject() {
         let value = document.querySelector("#filter").value
@@ -117,7 +118,7 @@ function Home() {
 
                     </div>
 
-                    <button className='btn-check'>Check Quality <span className='btn-tag'>0</span></button>
+                    <button className='btn-check'>Quality Check<span className='btn-tag'>0</span></button>
 
                 </div>
 

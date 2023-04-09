@@ -5,6 +5,7 @@ function Boxplot(props) {
 
     let y0 = props.roqs
     let y1 = props.watershed
+    let y2 = props.cnn
 
     let data = [{
             y: y0,
@@ -16,6 +17,11 @@ function Boxplot(props) {
             type: "box",
             name: "Watershed",
             marker: {color: "#E65C40"}
+        }, {
+            y: y2,
+            type: "box",
+            name: "CNN",
+            marker: {color: "#3A3A3A"}        
         }
     ]
 

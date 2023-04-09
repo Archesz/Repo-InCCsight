@@ -1,43 +1,74 @@
-# Nome do software
-Descrição curta do software.
+# InCCsight
+
+O inCCsight é uma ferramenta desktop open source para processar, explorar e analisar dados do Corpo Caloso (CC). 
 
 ## Instalação
-Para realizar a instalação, existem duas formas:
-a) Usuários que pretendem apenas utilizar a ferramenta, sem a necessidade de se ter o código e o ambiente de desenvolvimento, acesse: <a href="#"> www.vercel.miclab.com.br </a>
 
-b) Usuários com conhecimento técnico prévio, desenvolvedores ou pesquisadores que queiram utilizar a ferramenta e ter acesso ao código e funcionamento, sigam a próxima etapa:
+### Da fonte
+Para instalar a ferramenta diretamente a partir da fonte (Github) e ter acesso aos códigos:
+1. No terminal, digite `git clone https://github.com/MICLab-Unicamp/inCCsight`
+2. Caminhe até o local que foi realizado o download e realize o comando: `npm install`
+3. **Tipos de Uso:** 
+   3.1. **Desenvolvedor:** use o comando `yarn electron:serve`. Isso iniciará a ferramenta como desenvolvedor, permitindo realizar alterações no código e visualiza-las em tempo real.
+   3.2 **Usuário:** Use o comando `yarn electron:build`. Isso irá transformar a ferramenta em um executável Windows, Linux e Mac.
 
-### Pré-requisitos
-- (Para Windows) Sistema operacional Windows 10 ou superior.
-- Node.js instalado na versão 14 ou superior.
+Após a instalação, a primeira vez que abrir a ferramenta pode demorar um pouco para a inicialização, pois o anti-virus verificará a segurança.
 
-### Passos para instalação
-1. Faça o download do arquivo de instalação do software no site oficial ou clone o repositório do software.
-2. Abra o terminal na pasta onde está localizado o arquivo de instalação ou repositório clonado.
-3. Execute o comando npm install ou yarn install para instalar as dependências do projeto.
-4. Execute o comando yarn electron:serve para iniciar o software.
+### Website
+Para instalar a partir do Website, basta seguir os passos:
+1. Acessar o website: www.inCCsight.com.br
+2. Aba de Download e selecionar o seu sistema operacional.
+3. Clique em baixar.
 
-O software agora estará disponível para uso.
+## Uso
 
-## Utilização
-Instruções para utilização do software.
+## Como Criar um Novo Método
+Para criar um novo método dentro do Software, o usuário deve:
+- Possuir uma pasta com o nome do método.
+- Um arquivo "main.py" dentro da pasta.
+- O arquivo "main.py" deve ter o seguinte código para leitura dos dados:
+  ```python
+    import argparse
+    import glob
+    import os
+    import your_segmentation_method
 
-## Fluxo de trabalho básico
-Explicação do fluxo de trabalho básico com o software.
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-p', '--parent', nargs='*', dest='parents')
 
-## Exemplos de uso
-Exemplos de uso do software para pesquisadores e médicos.
+    args = parser.parse_args()
+        
+    # Read files
+    folder_mri = args.parents
+
+    all_subjects = []
+
+    for folder in folder_mri:
+        subjects = glob.glob(os.path.join(folder, "*"))
+
+        for subject in subjects:
+            all_subjects.append(subject)
+
+    your_segmentation_method.segment(all_subject)
+  ```
+- O seu método deve receber uma lista com o caminho de cada sujeito a ser processado.
+- Para que os dados sejam exibidos nos gráficos e tabelas da interface, o código deve gerar um arquivo CSV na pasta "../methods/csv"
+
+
+## Exemplo
 
 ## Contribuição
-Instruções para contribuir com o software.
 
-## Desenvolvimento
-Instruções para quem deseja contribuir para o desenvolvimento do software.
-
-## Problemas conhecidos
-Lista de problemas conhecidos do software e possíveis soluções.
-
-## Próximos passos
+## Contato
 
 ## Licença
-Informação sobre a licença do software e restrições de uso.
+
+## Avisos 
+
+No Linux, em package.json, adicionar os scripts:
+    "start": "react-scripts --openssl-legacy-provider start",
+    "build": "react-scripts --openssl-legacy-provider build"
+
+No Windows:
+    "start": "react-scripts start",
+    "build": "react-scripts build"

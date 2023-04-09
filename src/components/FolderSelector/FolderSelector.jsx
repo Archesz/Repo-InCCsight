@@ -3,7 +3,7 @@ import './FolderSelector.scss'
 import { TbFolder, TbChecks } from 'react-icons/tb'
 
 function FolderSelector(props) {
-    const [folderPath, setFolderPath] = useState("");
+    const [folderPath, setFolderPath] = useState([]);
     
     const inputRef = useRef(null);
 
@@ -16,10 +16,22 @@ function FolderSelector(props) {
     }
 
     function handleFolderChange(event) {
-        const selectedFolder = event.target.files[0].path;
-        let lastSlashIndex = selectedFolder.lastIndexOf("\\");
-        let folderPath = selectedFolder.substring(0, lastSlashIndex);
         
+        const selectedFolder = event.target.files[0].path;
+
+        let lastSlashIndex = selectedFolder.lastIndexOf("/");
+        let penultimateSlashIndex = selectedFolder.lastIndexOf("/", lastSlashIndex - 1);
+        let folderPath = selectedFolder.substring(0, penultimateSlashIndex);
+        
+        if(folderPath.length == 0){
+            lastSlashIndex = selectedFolder.lastIndexOf("\\");
+            penultimateSlashIndex = selectedFolder.lastIndexOf("\\", lastSlashIndex - 1);
+            folderPath = selectedFolder.substring(0, penultimateSlashIndex);
+        }
+
+        let check = document.querySelector(`#check_${props.id}`)
+        check.style.display = "flex"
+
         if (selectedFolder) {
             setFolderPath(folderPath);
             savePath(folderPath)
@@ -50,7 +62,7 @@ function FolderSelector(props) {
                 </button>
             </label>
 
-            {folderPath && <p className="path-label"><TbChecks className="check"/></p>}
+            <TbChecks id={`check_${props.id}`} className="check-icon"/>
         </div>
     );
 }

@@ -3,6 +3,8 @@ import Plot from 'react-plotly.js'
 import InfoTool from '../../components/InfoTool/InfoTool'
 import './TableSegmentation.scss'
 
+import { TbEyeFilled, TbEyeOff } from 'react-icons/tb'
+
 function getMeanValues(subjects, method, scalar){
     let value = 0
     subjects.map((subject) => {
@@ -17,19 +19,30 @@ function getMeanValues(subjects, method, scalar){
 
 function TableSegmentation(props) {
 
-    const [show, setShow] = useState("hide")
-    const [size, setSize] = useState(130)
+    let [view, setView] = useState("hide")
+    let [size, setSize] = useState(130)
+    let [iconEye, setIconEye] = useState(<TbEyeFilled />)
 
-    function changeShow(){
-        let value = document.querySelector("#show").value
-        setShow(value)
+    function changeShowSegmentation(type) {
+        let value = document.querySelector("#showView2D").value
+        console.log(value);
+    }
 
-        if(value === "show"){
-            setSize(160)
+    function teste(){
+        if(view == "hide"){
+            setView("show")
+            setIconEye(<TbEyeOff />)
         } else{
-            setSize(130)
+            setView("hide")
+            setIconEye(<TbEyeFilled />)
         }
     }
+
+        //if(view === "show"){
+        //    setSize(160)
+        //} else{
+        //    setSize(130)
+        //}
 
     /* Remover depois */
     let joany = [0.6556650233259003, 0.248837988995943, 0.0010308019022138776, 0.0004797977367285885, 0.0006192081277246568, 0.0005655540233389842, 0.0018539894511923193, 0.0004405055082694843]
@@ -38,9 +51,9 @@ function TableSegmentation(props) {
     let headers = []
     /* Selecionando os dados */
     let subjects = props.data
-    if(show === "show"){
+    if(view === "show"){
         headers = ["Method", "FA", "FA StdDev","MD", "MD StdDev", "RD", "RD StdDev", "AD", "AD StdDev"]
-    } else if(show === "hide"){
+    } else if(view === "hide"){
         headers = ["Method", "FA", "MD", "RD", "AD"]
     }
 
@@ -49,7 +62,7 @@ function TableSegmentation(props) {
     for(let i = 1; i !== headers.length; i++){
         let v1 = getMeanValues(subjects, "ROQS_scalar", headers[i])
         let v2 = getMeanValues(subjects, "Watershed_scalar", headers[i])
-        let v3 = joany[i].toFixed(6)
+        let v3 = getMeanValues(subjects, "santarosa_scalars", headers[i])
         cols.push([v1, v2, v3])
     }
     
@@ -92,10 +105,9 @@ function TableSegmentation(props) {
             
                     <div className='select-group'>
                         <label className={props.color}>Std. Dev: </label>
-                        <select onChange={changeShow} id="show">
-                            <option value="hide">Hide</option>
-                            <option value="show">Show</option>
-                        </select>
+
+                        <button onClick={teste} className="btn-icon">{iconEye}</button>
+
                     </div>
             
                 </div>
@@ -108,7 +120,7 @@ function TableSegmentation(props) {
         let cols = [["CNN-Based"]]
 
         for(let i = 1; i !== headers.length; i++){
-            let v1 = joany[i].toFixed(6)
+            let v1 = getMeanValues(subjects, "santarosa_scalars", headers[i])
             cols.push([v1])
         }
 
@@ -145,7 +157,7 @@ function TableSegmentation(props) {
             
                     <div className='select-group'>
                         <label className={props.color}>Std. Dev: </label>
-                        <select onChange={changeShow} id="show">
+                        <select onChange={() => {changeShowSegmentation("3D")}} id="show">
                             <option value="hide">Hide</option>
                             <option value="show">Show</option>
                         </select>

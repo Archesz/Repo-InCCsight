@@ -21,10 +21,6 @@ function Loading() {
     return () => clearInterval(interval)
   }, [phrases])
 
-  setTimeout(() => {
-    window.location.assign("/Home")
-  }, 5000);
-
   return (
     <div className='loader-container' id='loading-container'>
         <Dna

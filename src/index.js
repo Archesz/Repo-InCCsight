@@ -20,7 +20,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/Loading",
-    element: <Loading />
+    element: <div className='container'><Home /></div>
   },
   {
     path: "/Home",
