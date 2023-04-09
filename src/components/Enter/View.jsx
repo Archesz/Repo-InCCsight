@@ -6,7 +6,7 @@ import Question from '../Question/Question';
 const { ipcRenderer } = window.require('electron');
 
 const questions = [
-    { "question": "How to enter data into the software?", "response": "Boa sorte." },
+    { "question": "How to enter data into the software?", "response": "To insert data into inCCsight, click on the 'Folder' icon on the home screen and select the folder containing the subjects to perform the analysis. Each 'Subject' must be a folder containing the eigenvalues ​​and eigenvectors files.Click '+' to add more subject sets." },
     { "question": "How to add more groups to be analyzed?", "response": "Se vira" },
     { "question": "How to suggest modifications to the tool?", "response": "Se vira" },
     { "question": "What are the current limitations of the tool?", "response": "Se vira" },
@@ -24,9 +24,9 @@ function View(props) {
 
     function startAnalyzes() {
         let t = localStorage.getItem("folders")
-        window.startThais()
-        openWindow();
-        console.log(t)
+        // window.startThais(t)
+        window.startROQS(t)
+        // openWindow();
     }
 
     function handleAddButtonClick() {

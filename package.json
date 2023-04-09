@@ -1,5 +1,5 @@
 {
-  "name": "electron-react",
+  "name": "inccsight",
   "version": "0.1.0",
   "private": true,
   "author": "Miclab",
@@ -25,8 +25,8 @@
   "main": "public/main.js",
   "homepage": "./",
   "scripts": {
-    "start": "react-scripts --openssl-legacy-provider start",
-    "build": "react-scripts --openssl-legacy-provider build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "electron:serve": "concurrently -k \"cross-env BROWSER=none yarn start\" \"yarn electron:start\"",

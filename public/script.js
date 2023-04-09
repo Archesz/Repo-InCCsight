@@ -35,3 +35,14 @@ function startThais(){
     command = exec(`cd ../methods/thais && python app.py -p /home/jovi/Dados/teste`)
     //command = exec(`cd ./methods/thais && dir`)
 }
+
+function startROQS(folders){
+    let folder = folders
+    console.log(folder)
+    const parts = folder.split("\\")
+    console.log(parts)
+    const pathExceptLast = parts.slice(0, -1).join("\\");
+    console.log(pathExceptLast)
+    console.log('ok')
+    // command = exec(`cd ../methods/roqs && venv/Scripts/activate && python `)
+}
