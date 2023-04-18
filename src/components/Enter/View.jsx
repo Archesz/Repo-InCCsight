@@ -18,7 +18,7 @@ function openWindow() {
     ipcRenderer.send('open-window');
 }
 
-function View(props) {
+function View(props){
 
     const [folders, setFolders] = useState([<FolderSelector key={1} id={1} />]);
     const [filter, setFilter] = useState("")
@@ -28,6 +28,8 @@ function View(props) {
         // window.startThais(t)
         window.startROQS(t)
         // openWindow();
+    }
+
     async function startAnalyzes() {
         
         document.querySelector("#loading-screen").style.display = "flex"
@@ -45,7 +47,7 @@ function View(props) {
 
     async function loadLast(){
         
-        await window.transformJson();
+        // await window.transformJson();
         openWindow()
     }
 

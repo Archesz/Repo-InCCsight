@@ -24,7 +24,7 @@ function ConfigModal(props) {
                         <div className='modal-left'>
                             <span className='active'>Graphs and View</span>
                             <span onClick={() => {setPage("settings")}}>Settings</span>
-                            <span>Methods</span>
+                            <span onClick={() => {setPage("methods")}}>Methods</span>
                             <span>User Preferences</span>
                         </div>
     
@@ -48,6 +48,54 @@ function ConfigModal(props) {
                                 <div className='input-group'>
                                     <label>Name</label>
                                     <input type="text"/>
+                                </div>
+    
+                                <button className='btn-apply'>Apply and Save</button>
+    
+                            </div>
+    
+                        </div>
+                                                
+                    </div>
+    
+                </div>
+    
+            </div>
+        )
+    } else if(page == "methods"){
+        return (
+            <div id='modal-area'>
+                
+                <div className='modal-container'>
+                    
+                    <AiOutlineClose onClick={() => {closeModal(props.root)}} className="close-icon"/>
+    
+                    <div className='modal-body'>
+    
+                        <div className='modal-left'>
+                            <span className='active'>Graphs and View</span>
+                            <span onClick={() => {setPage("settings")}}>Settings</span>
+                            <span>Methods</span>
+                            <span>User Preferences</span>
+                        </div>
+    
+                        <div className='modal-right'>
+    
+                            <div className='modal-right-view'>
+    
+                                <div className='input-group'>
+    
+                                    <label>Method of</label>
+                                    <select>
+                                        <option>Segmentation</option>
+                                        <option>Parcellation</option>
+                                    </select>
+    
+                                </div>
+    
+                                <div className='input-group'>
+                                    <label>Select  Method</label>
+                                    <input type="file"/>
                                 </div>
     
                                 <button className='btn-apply'>Apply and Save</button>

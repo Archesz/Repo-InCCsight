@@ -36,7 +36,7 @@ function View(props) {
                         <span className='subject-name'>{data[0]["Id"]}</span>
                         
                         <div className='image'>
-                            <span className='msg-image'>Image upload will be added in next release</span>
+                            <span className='msg-image'></span>
                         </div>
                         
                         <div className='image-prompts'>
@@ -46,8 +46,8 @@ function View(props) {
                                     <label>Segm. Method</label>
                                     <select>
                                         <option value="">Watershed</option>
-                                        <option value="">ROQS</option>
-                                        <option value="">SantaRosa</option>
+                                        <option value="">ROQS Based</option>
+                                        <option value="">CNN Based</option>
                                     </select>
                                 </div>
     
@@ -118,7 +118,7 @@ function View(props) {
                         <span className='subject-name'>3D: {data[0]["Id"]}</span>
                         
                         <div className='image'>
-                            <span className='msg-image'>Image upload will be added in next release</span>
+                            <span className='msg-image'></span>
                         </div>
                         
                         <div className='image-prompts'>
@@ -129,7 +129,7 @@ function View(props) {
                                     <select>
                                         <option value="">Watershed</option>
                                         <option value="">ROQS</option>
-                                        <option value="">SantaRosa</option>
+                                        <option value="">CNN Based</option>
                                     </select>
                                 </div>
     
@@ -148,8 +148,7 @@ function View(props) {
                             </div>
     
                             <div className='image-buttons'>
-                                <button className='btn-3d' onClick={window.viewBrain}>3D Brain View</button>
-                                <button className='btn-3d' onClick={window.viewSegmentation}>3D CC View</button>
+                                <button className='btn-3d' onClick={window.viewBrain}>Volumetric View</button>
                                 <button className='btn-remove'>Remove</button>
                             </div>
     

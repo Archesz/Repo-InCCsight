@@ -57,6 +57,7 @@
                 box-sizing: border-box;
                 padding-right: 30px;
                 border-radius: 4px;
+                background-color: white;
                 border: 1px solid #BBBBBB;
                 height: 36px;
                 width: 160px;
@@ -75,4 +76,12 @@
 
 .none{
     display: none;
+}
+
+#scalarValueParcellation{
+    background-color: white;
+}
+
+#methodValue{
+    background-color: white;
 }

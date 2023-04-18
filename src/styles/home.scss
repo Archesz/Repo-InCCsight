@@ -65,6 +65,7 @@
                         border: 1px solid #BBBBBB;
                         height: 36px;
                         width: 320px;
+                        color: #080808;
                         padding-left: 6px;
                         background: none;
                         padding-right: 10px;
@@ -213,7 +214,7 @@
 
 .subject-select{
     width: 100%;
-    height: 60vh;
+    height: 70vh;
     background-color: #1F2C56;
     display: none;
     flex-direction: row;
@@ -238,6 +239,7 @@
             width: 500px;
             height: 280px;
             margin-bottom: 12px;
+            background-image: url("../assets/images/ccimage2.PNG");
             background-color: #080808;
             border-radius: 8px;
             display: flex;
@@ -268,7 +270,7 @@
                 flex-direction: row;
                 padding-top: 12px;
                 justify-content: space-between;
-                width: 80%;
+                width: 50%;
 
                 .btn-3d{
                     width: 120px;
@@ -276,7 +278,7 @@
                     border-radius: 6px;
                     background-color: white;
                     font-weight: bolder;
-                    font-size: 16px;
+                    font-size: 14px;
                     color: black;
                     border: none;
                     cursor: pointer;
@@ -314,12 +316,14 @@
                 height: 38px;
                 border-radius: 4px;
                 padding-left: 8px;
+                background-color: white;
+                color: #080808;
             }
         }
     }
 
     .subject-tables{
-        height: 95%;
+        height: 90%;
         display: flex;
         flex-direction: column;
         justify-content: space-around;
